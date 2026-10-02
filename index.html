@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="가볍고 맛있는 다이어트 레시피 모음. 카테고리별로 찾아보고 즐겨찾기에 저장하세요.">
+  <title>가벼운 식탁 · 다이어트 레시피</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="./" aria-label="가벼운 식탁 홈">
+        <span class="logo-mark" aria-hidden="true">🥗</span>
+        <span class="logo-text">가벼운 식탁</span>
+      </a>
+      <button type="button" class="fav-toggle" id="favToggle" aria-pressed="false">
+        <svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span>즐겨찾기</span>
+        <span class="fav-count" id="favCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>맛있게 먹고, 가볍게 관리하세요</h1>
+      <p>칼로리는 낮추고 포만감은 채운 다이어트 레시피를 모았어요.</p>
+
+      <div class="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.500-3.500"/></svg>
+        <input type="search" id="searchInput" placeholder="레시피나 재료를 검색해 보세요 (예: 닭가슴살, 두부)" aria-label="레시피 검색" autocomplete="off">
+      </div>
+    </section>
+
+    <section class="toolbar" aria-label="레시피 필터">
+      <div class="chips" id="categoryChips" role="group" aria-label="카테고리"></div>
+      <label class="sort">
+        <span class="sr-only">정렬</span>
+        <select id="sortSelect">
+          <option value="default">기본순</option>
+          <option value="kcal">칼로리 낮은순</option>
+          <option value="time">조리시간 짧은순</option>
+          <option value="protein">단백질 높은순</option>
+        </select>
+      </label>
+    </section>
+
+    <p class="result-info" id="resultInfo" aria-live="polite"></p>
+
+    <ul class="grid" id="recipeGrid"></ul>
+
+    <div class="empty" id="emptyState" hidden>
+      <span class="empty-icon" aria-hidden="true">🍽️</span>
+      <p class="empty-title" id="emptyTitle"></p>
+      <p class="empty-desc" id="emptyDesc"></p>
+      <button type="button" class="btn" id="resetBtn">전체 레시피 보기</button>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>영양 정보는 1인분 기준 대략적인 수치이며, 사용하는 재료와 양에 따라 달라질 수 있어요.</p>
+    </div>
+  </footer>
+
+  <dialog class="modal" id="recipeModal" aria-labelledby="modalTitle">
+    <div class="modal-content" id="modalContent"></div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
